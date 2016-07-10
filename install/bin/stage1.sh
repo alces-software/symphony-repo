@@ -104,7 +104,7 @@ firewall-cmd --reload
 
 #YUM
 yum -y --config https://raw.githubusercontent.com/alces-software/symphony4/master/etc/yum/centos7-base.conf update
-yum -y --config https://raw.githubusercontent.com/alces-software/symphony4/master/etc/yum/centos7-base.conf install vim emacs yum-utils git
+yum -y --config https://raw.githubusercontent.com/alces-software/symphony4/master/etc/yum/centos7-base.conf install vim emacs yum-utils git wget rsync
 
 #DISABLE CLOUD-INIT (WE ONLY NEED IT ONCE)
 systemctl disable cloud-init
@@ -113,4 +113,14 @@ systemctl disable cloud-config
 systemctl disable cloud-init-local
 
 echo "root:${ROOTPASSWORD}" | chpasswd
+
+#Format data disks
+mkdir -p /var/lib/pulp/content
+mkdir -p /var/lib/mongodb
+mkfs.xfs /dev/vdb 
+mkfs.xfs /dev/vdc
+cat << EOF >> /etc/fstab
+/dev/vdb                /var/lib/pulp/content   xfs     defaults        0 0
+/dev/vdc                /var/lib/mongodb        xfs     defaults        0 0
+EOF
 

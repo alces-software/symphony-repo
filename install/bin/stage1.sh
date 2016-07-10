@@ -124,3 +124,5 @@ cat << EOF >> /etc/fstab
 /dev/vdc                /var/lib/mongodb        xfs     defaults        0 0
 EOF
 
+#Allow root login with keys
+sed -i -e "s/^PermitRootLogin.*$/PermitRootLogin without-password/g" /etc/ssh/sshd_config

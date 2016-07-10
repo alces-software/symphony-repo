@@ -4,19 +4,6 @@
 
 PUPPET=1
 
-############# START PUPPET ###################
-if [ $PUPPET -gt 0 ]; then
-  puppet agent -t --environment=symphony
-fi
-############# END PUPPET #####################
-honeydew:bin steve$ vim stage3.sh
-honeydew:bin steve$ cat stage3.sh
-#!/bin/bash -x
-
-. /etc/symphony.cfg
-
-PUPPET=1
-
 YUMBASE=/opt/symphony/generic/etc/yum/centos7-base.conf
 
 ############# START PUPPET ###################

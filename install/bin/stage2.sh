@@ -50,7 +50,7 @@ if [ $PULP -gt 0 ]; then
   yum -y --config=$YUMBASE --enablerepo epel --enablerepo pulp groupinstall pulp-admin
   cat << EOF > /etc/pulp/admin/admin.conf
 [server]
-host: repo.bld.$CLUSTER.compute.estate
+host: repo.$CLUSTER.compute.estate
 verify_ssl: false
 
 [client]

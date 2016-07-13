@@ -82,10 +82,14 @@ cat << EOF > /etc/hosts
 ::1 localhost6.localdomain6 localhost6
 
 #Symphony
-10.78.254.3  repo.bld.$CLUSTER.compute.estate repo.build repo
+10.78.254.3  repo.$CLUSTER.compute.estate repo.bld.$CLUSTER.compute.estate repo.build repo
 10.110.254.3 repo.prv.$CLUSTER.compute.estate repo.prv
 10.111.254.3 repo.mgt.$CLUSTER.compute.estate repo.mgt
 10.77.254.3  repo.pub.$CLUSTER.compute.estate repo.pub
+
+10.78.254.1  director.$CLUSTER.compute.estate director
+10.78.254.2  directory.$CLUSTER.comput.estate directory
+10.78.254.4  monitor.$CLUSTER.compute.estate monitor
 EOF
 
 #FIREWALL

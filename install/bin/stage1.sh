@@ -121,11 +121,11 @@ echo "root:${ROOTPASSWORD}" | chpasswd
 #Format data disks
 mkdir -p /var/lib/pulp/content
 mkdir -p /var/lib/mongodb
-mkfs.xfs /dev/vdb 
-mkfs.xfs /dev/vdc
+mkfs.xfs /dev/vdc 
+mkfs.xfs /dev/vdd
 cat << EOF >> /etc/fstab
-/dev/vdb                /var/lib/pulp/content   xfs     defaults        0 0
-/dev/vdc                /var/lib/mongodb        xfs     defaults        0 0
+/dev/vdc                /var/lib/pulp/content   xfs     defaults        0 0
+/dev/vdd                /var/lib/mongodb        xfs     defaults        0 0
 EOF
 
 #Allow root login with keys

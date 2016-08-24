@@ -23,6 +23,11 @@
       <source file='%IMGPATH%/centos7-symphony-repo.qcow2'/>
       <target dev='vda' bus='virtio'/>
     </disk>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='%IMGPATH%/centos7-symphony-director-swap.qcow2'/>
+      <target dev='vdb' bus='virtio'/>
+    </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
       <source file='%IMGPATH%/symphony-repo-config.iso'/>
@@ -33,12 +38,12 @@
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
       <source file='%IMGPATH%/symphony-repo-pulp.qcow2'/>
-      <target dev='vdb' bus='virtio'/>
+      <target dev='vdc' bus='virtio'/>
     </disk>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
       <source file='%IMGPATH%/symphony-repo-mongo.qcow2'/>
-      <target dev='vdc' bus='virtio'/>
+      <target dev='vdd' bus='virtio'/>
     </disk>
     <controller type='usb' index='0'>
     </controller>

@@ -135,4 +135,4 @@ EOF
 sed -i -e "s/^PermitRootLogin.*$/PermitRootLogin without-password/g" /etc/ssh/sshd_config
 
 #swap mount
-echo "/dev/vdd        swap    swap    defaults 0 0" >> /etc/fstab
+echo "/dev/vdb        swap    swap    defaults 0 0" >> /etc/fstab

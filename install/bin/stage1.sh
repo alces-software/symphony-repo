@@ -114,6 +114,9 @@ systemctl disable cloud-init-local
 
 echo "root:${ROOTPASSWORD}" | chpasswd
 
+#Cleanup /var/lib/cloud for root password entries
+rm -rf /var/lib/cloud
+
 #Format data disks
 mkdir -p /var/lib/pulp/content
 mkdir -p /var/lib/mongodb
@@ -126,3 +129,6 @@ EOF
 
 #Allow root login with keys
 sed -i -e "s/^PermitRootLogin.*$/PermitRootLogin without-password/g" /etc/ssh/sshd_config
+
+#swap mount
+echo "/dev/vdd        swap    swap    defaults 0 0" >> /etc/fstab

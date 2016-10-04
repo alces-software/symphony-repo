@@ -23,6 +23,11 @@
       <source file='%IMGPATH%/centos7-symphony-repo.qcow2'/>
       <target dev='vda' bus='virtio'/>
     </disk>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='%IMGPATH%/centos7-symphony-director-swap.qcow2'/>
+      <target dev='vdb' bus='virtio'/>
+    </disk>
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
       <source file='%IMGPATH%/symphony-repo-config.iso'/>
@@ -33,33 +38,33 @@
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
       <source file='%IMGPATH%/symphony-repo-pulp.qcow2'/>
-      <target dev='vdb' bus='virtio'/>
+      <target dev='vdc' bus='virtio'/>
     </disk>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
       <source file='%IMGPATH%/symphony-repo-mongo.qcow2'/>
-      <target dev='vdc' bus='virtio'/>
+      <target dev='vdd' bus='virtio'/>
     </disk>
     <controller type='usb' index='0'>
     </controller>
-    <interface type='bridge'>
-      <source bridge='build'/>
+    <interface type='%BUILDNETWORKTYPE%'>
+      <source %BUILDNETWORKTYPE%='%BUILDNETWORKNAME%'/>
       <model type='virtio'/>
     </interface>
-    <interface type='bridge'>
-      <source bridge='prv'/>
+    <interface type='%PRIVATENETWORKTYPE%'>
+      <source %PRIVATENETWORKTYPE%='%PRIVATENETWORKNAME%'/>
       <model type='virtio'/>
     </interface>
-    <interface type='bridge'>
-      <source bridge='mgt'/>
+    <interface type='%MANAGEMENTNETWORKTYPE%'>
+      <source %MANAGEMENTNETWORKTYPE%='%MANAGEMENTNETWORKNAME%'/>
       <model type='virtio'/>
     </interface>
-    <interface type='bridge'>
-      <source bridge='dmz'/>
+    <interface type='%DMZNETWORKTYPE%'>
+      <source %DMZNETWORKTYPE%='%DMZNETWORKNAME%'/>
       <model type='virtio'/>
     </interface>
-    <interface type='bridge'>
-      <source bridge='ext'/>
+    <interface type='%EXTERNALNETWORKTYPE%'>
+      <source %EXTERNALNETWORKTYPE%='%EXTERNALNETWORKNAME%'/>
       <model type='virtio'/>
     </interface>
     <serial type='pty'>

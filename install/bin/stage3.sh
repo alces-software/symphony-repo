@@ -32,6 +32,7 @@ EOF
   echo "==========================================================================="
   echo "Please login to director and sign the certificate for this machine"
   echo "# puppet cert sign `hostname -s`"
+  sleep 60
   
   #Generate puppet signing request
   /usr/bin/puppet agent --test --waitforcert 10 --server director --environment symphony
@@ -39,3 +40,9 @@ EOF
   /usr/bin/puppet agent --test --environment symphony
 fi
 ############# END PUPPET #####################
+
+############# START CLEANUP ##################
+sed -i '/.*ephemeral0.*/d' /etc/fstab &&
+    systemctl reset-failed
+history -c
+############# END CLEANUP ####################
